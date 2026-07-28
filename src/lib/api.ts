@@ -3,11 +3,11 @@ export const API = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
 export type AuthUser = { id: number; name: string; email: string; is_admin: boolean };
 export type TokenOut = { access_token: string; token_type: string; user: AuthUser };
 
-export async function apiRegister(name: string, email: string, password: string): Promise<{ message: string }> {
+export async function apiRegister(name: string, email: string, password: string, turnstileToken: string): Promise<{ message: string }> {
   const res = await fetch(`${API}/api/auth/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, password }),
+    body: JSON.stringify({ name, email, password, turnstile_token: turnstileToken }),
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.detail ?? "Registration failed");

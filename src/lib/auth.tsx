@@ -8,7 +8,7 @@ type AuthContextValue = {
   token: string | null;
   isAdmin: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (name: string, email: string, password: string) => Promise<void>;
+  register: (name: string, email: string, password: string, turnstileToken: string) => Promise<void>;
   logout: () => void;
   persist: (access_token: string, u: AuthUser) => void;
 };
@@ -48,8 +48,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     persist(res.access_token, res.user);
   };
 
-  const register = async (name: string, email: string, password: string) => {
-    await apiRegister(name, email, password);
+  const register = async (name: string, email: string, password: string, turnstileToken: string) => {
+    await apiRegister(name, email, password, turnstileToken);
   };
 
   const logout = () => {

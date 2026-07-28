@@ -1,9 +1,60 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Eye, EyeOff, CheckCircle2, XCircle, Mail } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useAuth } from "@/lib/auth";
 import { useT } from "@/lib/i18n";
+
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
+const TURNSTILE_SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement, options: { sitekey: string; callback: (token: string) => void }) => string;
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
+
+function TurnstileWidget({ onVerify }: { onVerify: (token: string) => void }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return;
+
+    function render() {
+      if (containerRef.current && window.turnstile) {
+        window.turnstile.render(containerRef.current, {
+          sitekey: TURNSTILE_SITE_KEY as string,
+          callback: onVerify,
+        });
+      }
+    }
+
+    if (window.turnstile) {
+      render();
+      return;
+    }
+
+    const existing = document.querySelector(`script[src="${TURNSTILE_SCRIPT_SRC}"]`);
+    if (existing) {
+      existing.addEventListener("load", render);
+      return () => existing.removeEventListener("load", render);
+    }
+
+    const script = document.createElement("script");
+    script.src = TURNSTILE_SCRIPT_SRC;
+    script.async = true;
+    script.defer = true;
+    script.addEventListener("load", render);
+    document.head.appendChild(script);
+    return () => script.removeEventListener("load", render);
+  }, [onVerify]);
+
+  if (!TURNSTILE_SITE_KEY) return null;
+  return <div ref={containerRef} />;
+}
 
 export const Route = createFileRoute("/register")({
   head: () => ({ meta: [{ title: "Create account — Lilouette" }] }),
@@ -30,20 +81,24 @@ function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const rules = validate(password);
   const passwordValid = rules.length && rules.number;
   const passwordsMatch = password === confirm;
+  const captchaRequired = Boolean(TURNSTILE_SITE_KEY);
+  const captchaOk = !captchaRequired || Boolean(turnstileToken);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setTouched(true);
     if (!passwordValid) return;
     if (!passwordsMatch) return;
+    if (!captchaOk) return;
     setError(null);
     setLoading(true);
     try {
-      await register(name, email, password);
+      await register(name, email, password, turnstileToken);
       setDone(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
@@ -154,10 +209,12 @@ function RegisterPage() {
             )}
           </Field>
 
+          <TurnstileWidget onVerify={setTurnstileToken} />
+
           {error && <p className="text-sm text-destructive">{error}</p>}
 
           <button
-            type="submit" disabled={loading}
+            type="submit" disabled={loading || !captchaOk}
             className="w-full rounded-full bg-foreground text-background py-3 text-sm tracking-wide transition-all hover:bg-accent hover:shadow-[var(--shadow-soft)] disabled:opacity-60"
           >
             {loading ? t.register.submitting : t.register.submit}
