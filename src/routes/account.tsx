@@ -2,8 +2,9 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { Eye, EyeOff, CheckCircle2 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { OrderItemThumb } from "@/components/OrderItemThumb";
 import { useAuth } from "@/lib/auth";
-import { apiUpdateMe, apiChangePassword, apiMyOrders, API, type Order } from "@/lib/api";
+import { apiUpdateMe, apiChangePassword, apiMyOrders, type Order } from "@/lib/api";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/account")({
@@ -247,11 +248,7 @@ function OrdersSection({ token }: { token: string }) {
               <ul className="space-y-2">
                 {order.items.map((item, i) => (
                   <li key={i} className="text-sm text-muted-foreground flex items-center gap-3">
-                    <img
-                      src={`${API}${item.image_url}`}
-                      alt={item.product_name}
-                      className="h-10 w-10 rounded-lg object-cover bg-secondary flex-shrink-0"
-                    />
+                    <OrderItemThumb imageUrl={item.image_url} name={item.product_name} />
                     <span className="flex-1">{item.product_name} × {item.quantity}</span>
                     <span>€{(item.price * item.quantity).toFixed(2)}</span>
                   </li>

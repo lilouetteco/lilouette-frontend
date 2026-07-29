@@ -1,9 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>Lilouette — abstract petal favicon</title>
-  <rect width="64" height="64" rx="14" fill="#F7F3ED"/>
-  <path d="M32 32C21 30 15 23 17 15C25 13 32 19 32 32Z" fill="none" stroke="#111111" stroke-width="2.8" stroke-linejoin="round"/>
-  <path d="M32 32C34 21 41 15 49 17C51 25 45 32 32 32Z" fill="none" stroke="#111111" stroke-width="2.8" stroke-linejoin="round"/>
-  <path d="M32 32C43 34 49 41 47 49C39 51 32 45 32 32Z" fill="none" stroke="#111111" stroke-width="2.8" stroke-linejoin="round"/>
-  <path d="M32 32C30 43 23 49 15 47C13 39 19 32 32 32Z" fill="none" stroke="#111111" stroke-width="2.8" stroke-linejoin="round"/>
-  <circle cx="32" cy="32" r="2.6" fill="#111111"/>
+  <title>Lilouette — florette favicon</title>
+  <rect width="64" height="64" rx="14" fill="#28201a"/>
+  <g fill="#e8d5bc">
+    <ellipse cx="32" cy="20" rx="7.2" ry="10.5"/>
+    <ellipse cx="32" cy="20" rx="7.2" ry="10.5" transform="rotate(72 32 32)"/>
+    <ellipse cx="32" cy="20" rx="7.2" ry="10.5" transform="rotate(144 32 32)"/>
+    <ellipse cx="32" cy="20" rx="7.2" ry="10.5" transform="rotate(216 32 32)"/>
+    <ellipse cx="32" cy="20" rx="7.2" ry="10.5" transform="rotate(288 32 32)"/>
+    <circle cx="32" cy="32" r="4.2" fill="#28201a"/>
+  </g>
 </svg>
