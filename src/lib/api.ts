@@ -135,6 +135,7 @@ export async function clearCart(sessionId: string): Promise<void> {
 export type OrderItemIn = {
   product_slug: string;
   product_name: string;
+  image_url?: string;
   price: number;
   quantity: number;
 };
@@ -173,7 +174,7 @@ export async function createOrder(payload: {
   return res.json();
 }
 
-export type OrderItem = { product_slug: string; product_name: string; price: number; quantity: number };
+export type OrderItem = { product_slug: string; product_name: string; image_url: string; price: number; quantity: number };
 export type Order = { id: number; reference: string; name: string; email: string; phone: string; address: string; total: number; status: string; items: OrderItem[] };
 
 export async function apiUpdateMe(token: string, name: string): Promise<AuthUser> {

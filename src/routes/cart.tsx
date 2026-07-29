@@ -42,6 +42,7 @@ function CartPage() {
         items: items.map((i) => ({
           product_slug: i.slug,
           product_name: i.name,
+          image_url: i.image_url,
           price: i.price,
           quantity: i.quantity,
         })),

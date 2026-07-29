@@ -583,10 +583,15 @@ function OrdersTab({ token }: { token: string }) {
               ))}
             </select>
           </div>
-          <ul className="space-y-1 border-t border-border/40 pt-3">
+          <ul className="space-y-2 border-t border-border/40 pt-3">
             {order.items.map((item, i) => (
-              <li key={i} className="text-sm text-muted-foreground flex justify-between">
-                <span>{item.product_name} × {item.quantity}</span>
+              <li key={i} className="text-sm text-muted-foreground flex items-center gap-3">
+                <img
+                  src={`${API}${item.image_url}`}
+                  alt={item.product_name}
+                  className="h-10 w-10 rounded-lg object-cover bg-secondary flex-shrink-0"
+                />
+                <span className="flex-1">{item.product_name} × {item.quantity}</span>
                 <span>€{(item.price * item.quantity).toFixed(2)}</span>
               </li>
             ))}
