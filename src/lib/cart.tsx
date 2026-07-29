@@ -71,6 +71,8 @@ export function CartProvider({ children, products }: { children: ReactNode; prod
 
   const addItem = async (product: Product) => {
     if (!sessionId) return;
+    const existingBefore = rawItems.find((i) => i.product_slug === product.slug);
+    if (existingBefore && existingBefore.quantity >= product.stock) return;
 
     // Optimistic update — source of truth for adds
     setRawItems((prev) => {
@@ -112,14 +114,16 @@ export function CartProvider({ children, products }: { children: ReactNode; prod
 
   const updateQuantity = async (slug: string, quantity: number) => {
     if (!sessionId) return;
+    const stock = productMap[slug]?.stock ?? Infinity;
+    const clamped = Math.min(quantity, stock);
     const before = rawItems;
     setRawItems((prev) =>
-      quantity <= 0
+      clamped <= 0
         ? prev.filter((i) => i.product_slug !== slug)
-        : prev.map((i) => (i.product_slug === slug ? { ...i, quantity } : i)),
+        : prev.map((i) => (i.product_slug === slug ? { ...i, quantity: clamped } : i)),
     );
     try {
-      await updateCartItem(sessionId, slug, quantity);
+      await updateCartItem(sessionId, slug, clamped);
     } catch {
       setRawItems(before);
     }

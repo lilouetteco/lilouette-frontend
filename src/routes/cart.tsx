@@ -50,8 +50,8 @@ function CartPage() {
       setOrder(placed);
       await clear();
       setStep("confirmed");
-    } catch {
-      setError("Something went wrong. Please try again.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t.cart.error);
     } finally {
       setLoading(false);
     }
@@ -114,7 +114,8 @@ function CartPage() {
                           <span className="text-sm w-6 text-center">{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.slug, item.quantity + 1)}
-                            className="h-8 w-8 inline-flex items-center justify-center rounded-full border border-border hover:bg-secondary transition-colors"
+                            disabled={item.quantity >= item.stock}
+                            className="h-8 w-8 inline-flex items-center justify-center rounded-full border border-border hover:bg-secondary transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:cursor-not-allowed"
                             aria-label="Increase quantity"
                           >
                             <Plus className="h-3 w-3" />
@@ -123,6 +124,9 @@ function CartPage() {
                             €{(item.price * item.quantity).toFixed(2)}
                           </span>
                         </div>
+                        {item.quantity >= item.stock && (
+                          <p className="mt-1.5 text-xs text-muted-foreground">Only {item.stock} in stock</p>
+                        )}
                       </div>
                     </li>
                   ))}
@@ -252,7 +256,7 @@ function CartPage() {
                   />
                 </Field>
 
-                {error && <p className="text-sm text-destructive">{t.cart.error}</p>}
+                {error && <p className="text-sm text-destructive">{error}</p>}
 
                 <button
                   type="submit" disabled={loading}
