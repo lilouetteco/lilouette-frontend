@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lilouette — Statement Earrings" },
+      { title: "lilouette.co" },
       { name: "description", content: "Lilouette is a small jewelry studio offering sculptural gold and pearl earrings, curated in small batches." },
       { property: "og:title", content: "Lilouette — Statement Earrings" },
       { property: "og:description", content: "Sculptural, romantic earrings made to be worn every day." },
