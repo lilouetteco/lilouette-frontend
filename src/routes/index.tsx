@@ -10,7 +10,7 @@ import { fetchProducts, type Product, API } from "@/lib/api";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lilouette — Statement Earrings" },
+      { title: "lilouette.co" },
       { name: "description", content: "Lilouette is a small jewelry studio offering sculptural gold and pearl earrings, curated in small batches." },
       { property: "og:title", content: "Lilouette — Statement Earrings" },
       { property: "og:description", content: "Sculptural, romantic earrings made to be worn every day." },
