@@ -125,8 +125,9 @@ function Index() {
 }
 
 function FeaturedCard({ product }: { product: Product }) {
-  const { addItem } = useCart();
+  const { addItem, items } = useCart();
   const { t } = useT();
+  const inBag = items.some((i) => i.slug === product.slug);
   return (
     <article className="group">
       <Link to="/products/$slug" params={{ slug: product.slug }} className="block overflow-hidden rounded-2xl bg-secondary aspect-square">
@@ -148,13 +149,14 @@ function FeaturedCard({ product }: { product: Product }) {
       )}
       <button
         onClick={() => {
+          if (inBag) return;
           addItem(product);
           toast.success(`${product.name} ${t.product.addedToBag}`);
         }}
-        disabled={product.is_sold_out || product.stock <= 0}
+        disabled={product.is_sold_out || product.stock <= 0 || inBag}
         className="mt-2 text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4 disabled:opacity-40 disabled:cursor-not-allowed disabled:no-underline"
       >
-        {t.home.quickAdd}
+        {inBag ? t.product.inBag : t.home.quickAdd}
       </button>
     </article>
   );

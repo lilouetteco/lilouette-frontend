@@ -80,8 +80,9 @@ function ProductsPage() {
 }
 
 function ProductCard({ product }: { product: Product }) {
-  const { addItem } = useCart();
+  const { addItem, items } = useCart();
   const { t } = useT();
+  const inBag = items.some((i) => i.slug === product.slug);
   return (
     <article className="group flex flex-col">
       <Link to="/products/$slug" params={{ slug: product.slug }} className="block overflow-hidden rounded-2xl bg-secondary aspect-square mb-5">
@@ -96,11 +97,11 @@ function ProductCard({ product }: { product: Product }) {
         <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground/50 mb-2">{t.products.soldOut}</p>
       )}
       <button
-        onClick={() => { addItem(product); toast.success(`${product.name} ${t.product.addedToBag}`); }}
-        disabled={product.is_sold_out || product.stock <= 0}
+        onClick={() => { if (inBag) return; addItem(product); toast.success(`${product.name} ${t.product.addedToBag}`); }}
+        disabled={product.is_sold_out || product.stock <= 0 || inBag}
         className="mt-auto inline-flex items-center justify-center rounded-full border border-foreground/80 px-5 py-2.5 text-xs tracking-[0.2em] uppercase text-foreground transition-all hover:bg-foreground hover:text-background disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-foreground"
       >
-        {t.product.addToBag}
+        {inBag ? t.product.inBag : t.product.addToBag}
       </button>
     </article>
   );

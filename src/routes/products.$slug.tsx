@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { ArrowLeft, ChevronLeft, ChevronRight, Minus, Plus } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
 import { toast } from "sonner";
@@ -23,9 +23,8 @@ function ProductDetailPage() {
 
   const product = products.find((p) => p.slug === slug);
 
-  const { addItem } = useCart();
+  const { addItem, items } = useCart();
   const { t } = useT();
-  const [qty, setQty] = useState(1);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const allImages = product
@@ -39,10 +38,11 @@ function ProductDetailPage() {
   function next() { setActiveIndex((i) => (i + 1) % allImages.length); }
 
   const soldOut = !product || product.is_sold_out || product.stock <= 0;
+  const inBag = !!product && items.some((i) => i.slug === product.slug);
 
   function handleAdd() {
-    if (!product || soldOut) return;
-    for (let i = 0; i < qty; i++) addItem(product);
+    if (!product || soldOut || inBag) return;
+    addItem(product);
     toast.success(`${product.name} ${t.product.addedToBag}`);
   }
 
@@ -171,37 +171,12 @@ function ProductDetailPage() {
               </div>
             ) : (
               <div className="space-y-4">
-                {/* Quantity */}
-                <div className="flex items-center gap-4">
-                  <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">{t.product.quantity}</span>
-                  <div className="flex items-center gap-3 rounded-full border border-border px-4 py-2">
-                    <button
-                      onClick={() => setQty((q) => Math.max(1, q - 1))}
-                      disabled={qty <= 1}
-                      className="text-muted-foreground hover:text-foreground transition-colors disabled:opacity-30"
-                      aria-label="Decrease quantity"
-                    >
-                      <Minus className="h-3.5 w-3.5" />
-                    </button>
-                    <span className="w-5 text-center text-sm tabular-nums">{qty}</span>
-                    <button
-                      onClick={() => setQty((q) => Math.min(product.stock, q + 1))}
-                      disabled={qty >= product.stock}
-                      className="text-muted-foreground hover:text-foreground transition-colors disabled:opacity-30"
-                      aria-label="Increase quantity"
-                    >
-                      <Plus className="h-3.5 w-3.5" />
-                    </button>
-                  </div>
-                  <span className="text-xs text-muted-foreground">{product.stock} {t.product.inStock}</span>
-                </div>
-
-                {/* Add to bag */}
                 <button
                   onClick={handleAdd}
-                  className="w-full rounded-full bg-foreground text-background py-4 text-sm tracking-[0.2em] uppercase transition-all hover:bg-accent hover:shadow-[var(--shadow-soft)]"
+                  disabled={inBag}
+                  className="w-full rounded-full bg-foreground text-background py-4 text-sm tracking-[0.2em] uppercase transition-all hover:bg-accent hover:shadow-[var(--shadow-soft)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-foreground"
                 >
-                  {t.product.addToBag}
+                  {inBag ? t.product.inBag : t.product.addToBag}
                 </button>
               </div>
             )}

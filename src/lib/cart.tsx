@@ -5,7 +5,6 @@ import {
   createCartSession,
   fetchCart,
   removeFromCart,
-  updateCartItem,
   type Product,
 } from "@/lib/api";
 
@@ -18,7 +17,6 @@ type CartContextValue = {
   subtotal: number;
   addItem: (product: Product) => void;
   removeItem: (slug: string) => void;
-  updateQuantity: (slug: string, quantity: number) => void;
   clear: () => void;
 };
 
@@ -72,7 +70,7 @@ export function CartProvider({ children, products }: { children: ReactNode; prod
   const addItem = async (product: Product) => {
     if (!sessionId) return;
     const existingBefore = rawItems.find((i) => i.product_slug === product.slug);
-    if (existingBefore && existingBefore.quantity >= product.stock) return;
+    if (existingBefore && existingBefore.quantity >= 1) return;
 
     // Optimistic update — source of truth for adds
     setRawItems((prev) => {
@@ -112,23 +110,6 @@ export function CartProvider({ children, products }: { children: ReactNode; prod
     }
   };
 
-  const updateQuantity = async (slug: string, quantity: number) => {
-    if (!sessionId) return;
-    const stock = productMap[slug]?.stock ?? Infinity;
-    const clamped = Math.min(quantity, stock);
-    const before = rawItems;
-    setRawItems((prev) =>
-      clamped <= 0
-        ? prev.filter((i) => i.product_slug !== slug)
-        : prev.map((i) => (i.product_slug === slug ? { ...i, quantity: clamped } : i)),
-    );
-    try {
-      await updateCartItem(sessionId, slug, clamped);
-    } catch {
-      setRawItems(before);
-    }
-  };
-
   const clear = async () => {
     if (!sessionId) return;
     setRawItems([]);
@@ -144,7 +125,7 @@ export function CartProvider({ children, products }: { children: ReactNode; prod
   const subtotal = items.reduce((sum, i) => sum + i.quantity * i.price, 0);
 
   return (
-    <CartContext.Provider value={{ items, count, subtotal, addItem, removeItem, updateQuantity, clear }}>
+    <CartContext.Provider value={{ items, count, subtotal, addItem, removeItem, clear }}>
       {children}
     </CartContext.Provider>
   );

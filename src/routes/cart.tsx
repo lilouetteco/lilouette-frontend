@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { Minus, Plus, X, Banknote, CheckCircle2, ArrowLeft } from "lucide-react";
+import { X, Banknote, CheckCircle2, ArrowLeft } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
 import { createOrder, type OrderOut, API } from "@/lib/api";
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/cart")({
 type Step = "cart" | "checkout" | "confirmed";
 
 function CartPage() {
-  const { items, subtotal, removeItem, updateQuantity, clear } = useCart();
+  const { items, subtotal, removeItem, clear } = useCart();
   const { t } = useT();
   const [step, setStep] = useState<Step>("cart");
   const [order, setOrder] = useState<OrderOut | null>(null);
@@ -103,30 +103,6 @@ function CartPage() {
                             <X className="h-4 w-4" />
                           </button>
                         </div>
-                        <div className="mt-4 flex items-center gap-3">
-                          <button
-                            onClick={() => updateQuantity(item.slug, item.quantity - 1)}
-                            className="h-8 w-8 inline-flex items-center justify-center rounded-full border border-border hover:bg-secondary transition-colors"
-                            aria-label="Decrease quantity"
-                          >
-                            <Minus className="h-3 w-3" />
-                          </button>
-                          <span className="text-sm w-6 text-center">{item.quantity}</span>
-                          <button
-                            onClick={() => updateQuantity(item.slug, item.quantity + 1)}
-                            disabled={item.quantity >= item.stock}
-                            className="h-8 w-8 inline-flex items-center justify-center rounded-full border border-border hover:bg-secondary transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:cursor-not-allowed"
-                            aria-label="Increase quantity"
-                          >
-                            <Plus className="h-3 w-3" />
-                          </button>
-                          <span className="ml-auto text-sm text-muted-foreground">
-                            €{(item.price * item.quantity).toFixed(2)}
-                          </span>
-                        </div>
-                        {item.quantity >= item.stock && (
-                          <p className="mt-1.5 text-xs text-muted-foreground">Only {item.stock} in stock</p>
-                        )}
                       </div>
                     </li>
                   ))}
