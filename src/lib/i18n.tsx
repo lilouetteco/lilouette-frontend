@@ -195,7 +195,7 @@ const translations = {
         },
         {
           title: "6. Shipping",
-          body: "Orders are typically prepared within 1–2 business days. Delivery within Kosovo takes about 2–4 business days; international orders can take 7–14 business days depending on where you are. We're not responsible for delays caused by the courier, weather, or public holidays.",
+          body: "Orders are typically prepared within 1–2 business days. Delivery within Kosovo takes about 2–4 business days. We're not responsible for delays caused by the courier, weather, or public holidays.",
         },
         {
           title: "7. Returns & exchanges",
@@ -431,7 +431,7 @@ const translations = {
         },
         {
           title: "6. Dërgesa",
-          body: "Porositë zakonisht përgatiten brenda 1–2 ditëve pune. Brenda Kosovës, dorëzimi zgjat rreth 2–4 ditë pune, ndërsa për destinacione jashtë vendit mund të duhen 7–14 ditë pune, varësisht nga lokacioni. Lilouette nuk mban përgjegjësi për vonesa të shkaktuara nga kompania e transportit, kushtet e motit ose ditë feste.",
+          body: "Porositë zakonisht përgatiten brenda 1–2 ditëve pune. Brenda Kosovës, dorëzimi zgjat rreth 2–4 ditë pune. Lilouette nuk mban përgjegjësi për vonesa të shkaktuara nga kompania e transportit, kushtet e motit ose ditë feste.",
         },
         {
           title: "7. Kthimi ose ndërrimi i një produkti",
