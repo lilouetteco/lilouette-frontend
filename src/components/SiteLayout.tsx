@@ -133,7 +133,7 @@ function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-muted-foreground">
         <img src={logoImage} alt="Lilouette" className="h-4 w-auto" />
         <div className="flex items-center gap-6">
-          <Link to="/faqs" className="hover:text-foreground transition-colors">{t.nav.faqs}</Link>
+          <Link to="/faqs" className="hover:text-foreground transition-colors">{t.nav.terms}</Link>
           <Link to="/contact" className="hover:text-foreground transition-colors">{t.nav.contact}</Link>
           <p>© {new Date().getFullYear()} Lilouette.</p>
         </div>

@@ -6,7 +6,7 @@ const translations = {
   en: {
     nav: {
       collection: "Collection",
-      faqs: "FAQs",
+      terms: "Terms & Conditions",
       contact: "Contact",
       signIn: "Sign in",
       signOut: "Sign out",
@@ -167,27 +167,59 @@ const translations = {
       noOrders: "You haven't placed any orders yet.",
       order: "Order",
     },
-    faqs: {
-      eyebrow: "Help",
-      title: "Frequently asked questions",
-      stillQuestion: "Still have a question?",
-      getInTouch: "Get in touch",
-      items: [
+    terms: {
+      eyebrow: "Legal",
+      title: "Terms & Conditions",
+      stillQuestion: "Have a question about these terms?",
+      getInTouch: "Contact us",
+      sections: [
         {
-          q: "What materials are your pieces made from?",
-          a: "All Lilouette pieces are crafted from high-quality 925 sterling silver and 18k gold-plated brass. We use hypoallergenic materials throughout, so they're safe for sensitive skin. Each piece is finished by hand to ensure the details stay sharp and the shine lasts.",
+          title: "1. About Lilouette",
+          body: "Lilouette designs earrings and everyday pieces made to be worn, not just admired. This page explains the terms that apply when you use our website or place an order, and how we handle your information along the way.",
         },
         {
-          q: "How do I care for my jewelry?",
-          a: "Keep your pieces away from water, perfume, and lotions — put your jewelry on last when getting ready. Store each piece separately in a soft pouch or the box it came in to avoid scratches. To clean, gently wipe with a dry soft cloth. With a little care, your Lilouette pieces will stay beautiful for years.",
+          title: "2. Using our site means you agree",
+          body: "By browsing or ordering from lilouette.co, you're agreeing to the terms outlined here. If any part of them doesn't sit right with you, please hold off on using the site or placing an order.",
         },
         {
-          q: "How long does shipping take?",
-          a: "Orders are processed within 1–2 business days. Standard delivery within Kosovo takes 2–4 business days. For international orders, please allow 7–14 business days depending on your location. You'll receive a confirmation email with tracking details once your order has shipped.",
+          title: "3. Products & descriptions",
+          body: "We do our best to keep photos, colors, and descriptions accurate, but small variations can happen due to your screen or the handmade nature of each piece. If an item sells out after you've ordered it, we'll reach out right away with a replacement option or a full refund.",
         },
         {
-          q: "Can I return or exchange a piece?",
-          a: "We want you to love what you receive. If something isn't right, you can request a return or exchange within 14 days of receiving your order — as long as the piece is unworn and in its original packaging. Reach out to us on Instagram @lilouette.co or through the contact page and we'll take care of you.",
+          title: "4. Placing an order",
+          body: "Placing an order is a request to buy at the price shown at that moment. You'll get a confirmation by email or message once it's logged. We reserve the right to cancel an order in certain cases — a pricing error, an item out of stock, or suspected fraud.",
+        },
+        {
+          title: "5. Payment",
+          body: "Right now we only accept cash on delivery — no card needed online. You pay the courier directly when your package arrives.",
+        },
+        {
+          title: "6. Shipping",
+          body: "Orders are typically prepared within 1–2 business days. Delivery within Kosovo takes about 2–4 business days; international orders can take 7–14 business days depending on where you are. We're not responsible for delays caused by the courier, weather, or public holidays.",
+        },
+        {
+          title: "7. Returns & exchanges",
+          body: "Not the right fit? You can request a return or exchange within 14 days of receiving your order, as long as the piece is unworn and still in its original packaging. If the issue is a defect or a mistake on our end, we'll cover the return shipping.",
+        },
+        {
+          title: "8. Ownership of our content",
+          body: "The Lilouette logo, photos, text, and site design belong to us and are protected under copyright law. Please don't copy, redistribute, or reuse them commercially without our written permission.",
+        },
+        {
+          title: "9. Your privacy",
+          body: "The details you share when ordering — name, address, phone number, email — are only used to process your order and stay in touch about it. We don't sell or share your information with third parties for marketing.",
+        },
+        {
+          title: "10. Limits on our responsibility",
+          body: "We work hard to keep our information accurate and our service reliable, but Lilouette isn't liable for damages resulting from misuse of a product or from circumstances outside our control.",
+        },
+        {
+          title: "11. Changes to these terms",
+          body: "These terms may be updated from time to time without prior notice. The current version always lives on this page, so it's worth a glance every so often.",
+        },
+        {
+          title: "12. Get in touch",
+          body: "Questions about these terms, an order, or your data? Message us on Instagram @lilouette.co or through our contact page.",
         },
       ],
     },
@@ -210,7 +242,7 @@ const translations = {
   sq: {
     nav: {
       collection: "Koleksioni",
-      faqs: "Pyetje të shpeshta",
+      terms: "Termet & Kushtet",
       contact: "Kontakt",
       signIn: "Hyr",
       signOut: "Dil",
@@ -371,27 +403,59 @@ const translations = {
       noOrders: "Nuk keni bërë asnjë porosi ende.",
       order: "Porosia",
     },
-    faqs: {
-      eyebrow: "Ndihmë",
-      title: "Pyetje të shpeshta",
-      stillQuestion: "Keni akoma pyetje?",
-      getInTouch: "Na kontaktoni",
-      items: [
+    terms: {
+      eyebrow: "Informacion ligjor",
+      title: "Termet & Kushtet",
+      stillQuestion: "Ke ndonjë pyetje rreth këtyre kushteve?",
+      getInTouch: "Na kontakto",
+      sections: [
         {
-          q: "Nga çfarë materialesh janë bëra stolitë tuaja?",
-          a: "Të gjitha stolitë Lilouette janë bëra nga argjendi sterling 925 i cilësisë së lartë dhe tunxhi i veshur me ar 18k. Përdorim materiale hipoalergjike gjatë gjithë procesit, kështu që janë të sigurta për lëkurën e ndjeshme. Çdo copë përfundohet me dorë për të siguruar që detajet të mbeten të qarta dhe shkëlqimi të zgjasë.",
+          title: "1. Kush jemi ne",
+          body: "Lilouette është një markë stolish që dizajnon vathë dhe pjesë të tjera për t'u veshur çdo ditë. Kjo faqe shpjegon kushtet sipas të cilave mund ta përdorësh faqen tonë dhe të bësh një porosi, si dhe mënyrën se si trajtojmë të dhënat e tua.",
         },
         {
-          q: "Si t'i kujdesem për stolitë e mia?",
-          a: "Mbajini stolitë tuaja larg ujit, parfumit dhe losioneve — vishini stolitë tuaja të fundit kur përgatiteni. Ruajeni çdo copë veçmas në një qeskë të butë ose kutinë origjinale për të shmangur gërvishtjet. Për pastrim, fshijini butësisht me një leckë të thatë e të butë. Me pak kujdes, stolitë tuaja Lilouette do të mbeten të bukura për vite.",
+          title: "2. Duke përdorur faqen, i pranon këto kushte",
+          body: "Thjesht duke shfletuar ose duke blerë nga lilouette.co, konsiderohet se je dakord me kushtet e përshkruara në këtë faqe. Nëse ka ndonjë pikë me të cilën nuk pajtohesh, të lutemi mos vazhdo me përdorimin e faqes ose me kryerjen e një porosie.",
         },
         {
-          q: "Sa kohë zgjat dërgesa?",
-          a: "Porositë përpunohen brenda 1–2 ditëve të punës. Dërgesa standarde brenda Kosovës zgjat 2–4 ditë pune. Për porositë ndërkombëtare, ju lutemi prisni 7–14 ditë pune në varësi të vendndodhjes suaj. Do të merrni një email konfirmimi me detajet e gjurmimit pasi porosia juaj të jetë dërguar.",
+          title: "3. Produktet dhe përshkrimet",
+          body: "Përpiqemi që fotot, ngjyrat dhe përshkrimet e çdo produkti të jenë sa më afër realitetit, por variacione të vogla janë të mundshme për shkak të ekranit tënd ose procesit të prodhimit me dorë. Nëse një artikull mbaron nga stoku pas porositjes, do të njoftohesh menjëherë dhe do të ofrohet zëvendësim ose kthim i plotë i shumës.",
         },
         {
-          q: "A mund të kthej ose ndërroj një copë?",
-          a: "Ne duam që të dashuroni atë që merrni. Nëse diçka nuk është e drejtë, mund të kërkoni kthim ose ndërrим brenda 14 ditëve nga marrja e porosisë suaj — për sa kohë copa është e paveshur dhe në paketimin origjinal. Na kontaktoni në Instagram @lilouette.co ose përmes faqes së kontaktit dhe ne do t'ju kujdesemi.",
+          title: "4. Si funksionon një porosi",
+          body: "Kur vendos një porosi, kjo konsiderohet si një kërkesë për blerje sipas çmimit të shfaqur në atë moment. Do të marrësh një konfirmim me email ose mesazh pasi porosia të jetë regjistruar. Lilouette ka të drejtë të anulojë një porosi në raste të veçanta, si p.sh. gabim çmimi, mungesë stoku ose dyshim për mashtrim.",
+        },
+        {
+          title: "5. Pagesa",
+          body: "Aktualisht pranojmë vetëm pagesë cash në momentin e dorëzimit — nuk kërkohet kartë online. Shuma paguhet direkt te korrieri kur merr paketën tënde.",
+        },
+        {
+          title: "6. Dërgesa",
+          body: "Porositë zakonisht përgatiten brenda 1–2 ditëve pune. Brenda Kosovës, dorëzimi zgjat rreth 2–4 ditë pune, ndërsa për destinacione jashtë vendit mund të duhen 7–14 ditë pune, varësisht nga lokacioni. Lilouette nuk mban përgjegjësi për vonesa të shkaktuara nga kompania e transportit, kushtet e motit ose ditë feste.",
+        },
+        {
+          title: "7. Kthimi ose ndërrimi i një produkti",
+          body: "Nëse produkti nuk të pëlqen ose ka ndonjë problem, mund të kërkosh kthim apo ndërrim brenda 14 ditëve nga marrja e porosisë, me kusht që artikulli të jetë i paveshur dhe në paketimin origjinal. Nëse arsyeja e kthimit është defekt apo gabim nga ana jonë, kostot e dërgesës për kthimin i mbulojmë ne.",
+        },
+        {
+          title: "8. Të drejtat mbi përmbajtjen",
+          body: "Logoja, fotografitë, tekstet dhe dizajni i faqes lilouette.co janë pronësi e Lilouette dhe mbrohen nga legjislacioni për të drejtat e autorit. Ndalohet riprodhimi, shpërndarja apo përdorimi tregtar i tyre pa lejen tonë paraprake me shkrim.",
+        },
+        {
+          title: "9. Privatësia e të dhënave tuaja",
+          body: "Informacionet që na jep gjatë porositjes (emri, adresa, numri i telefonit, email-i) përdoren vetëm për të përpunuar porosinë dhe për t'u lidhur me ty rreth saj. Nuk i shesim apo i ndajmë të dhënat e tua me palë të treta për qëllime marketingu.",
+        },
+        {
+          title: "10. Kufizimi i përgjegjësisë",
+          body: "Bëjmë çmos që informacioni në faqe të jetë i saktë dhe shërbimi i cilësisë së lartë, por Lilouette nuk mban përgjegjësi për dëme që mund të vijnë nga përdorimi jo i duhur i produkteve ose nga probleme jashtë kontrollit tonë.",
+        },
+        {
+          title: "11. Ndryshime të mundshme",
+          body: "Këto kushte mund të përditësohen herë pas here pa njoftim paraprak. Versioni aktual gjendet gjithmonë në këtë faqe, prandaj të rekomandojmë ta rishikosh kohë pas kohe.",
+        },
+        {
+          title: "12. Na kontakto",
+          body: "Për çdo pyetje rreth këtyre kushteve, porosive apo privatësisë, na shkruaj në Instagram @lilouette.co ose përmes faqes së kontaktit.",
         },
       ],
     },
