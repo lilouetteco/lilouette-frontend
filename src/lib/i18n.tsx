@@ -179,15 +179,15 @@ const translations = {
         },
         {
           title: "2. Using our site means you agree",
-          body: "By browsing or ordering from lilouette.co, you're agreeing to the terms outlined here. If any part of them doesn't sit right with you, please hold off on using the site or placing an order.",
+          body: "By browsing or ordering from lilouette.co, you're agreeing to the terms outlined here.",
         },
         {
           title: "3. Products & descriptions",
-          body: "We do our best to keep photos, colors, and descriptions accurate, but small variations can happen due to your screen or the handmade nature of each piece. If an item sells out after you've ordered it, we'll reach out right away with a replacement option or a full refund.",
+          body: "We do our best to keep photos, colors, and descriptions accurate. If an item sells out after you've ordered it, we'll reach out right away.",
         },
         {
           title: "4. Placing an order",
-          body: "Placing an order is a request to buy at the price shown at that moment. You'll get a confirmation by email or message once it's logged. We reserve the right to cancel an order in certain cases — a pricing error, an item out of stock, or suspected fraud.",
+          body: "Placing an order is a request to buy at the price shown at that moment. Once you've confirmed all your order details and the order is placed, you'll get a confirmation by email and we'll also contact you by phone to confirm. We reserve the right to cancel an order in certain cases — a pricing error, an item out of stock, or suspected fraud.",
         },
         {
           title: "5. Payment",
@@ -195,11 +195,11 @@ const translations = {
         },
         {
           title: "6. Shipping",
-          body: "Orders are typically prepared within 1–2 business days. Delivery within Kosovo takes about 2–4 business days. We're not responsible for delays caused by the courier, weather, or public holidays.",
+          body: "Delivery takes 1 to 2 business days.",
         },
         {
           title: "7. Exchanges",
-          body: "Not the right fit? You can exchange it for a different piece within 14 days of receiving your order, as long as it's unworn and still in its original packaging. We don't offer refunds — exchanges only. If the issue is a defect or a mistake on our end, we'll cover the shipping cost.",
+          body: "Not the right fit or found an issue? Exchanges are accepted only within 24 hours of receiving your order, as long as it's unworn and still in its original packaging. We don't offer refunds — exchanges only.",
         },
         {
           title: "8. Ownership of our content",
@@ -207,15 +207,15 @@ const translations = {
         },
         {
           title: "9. Your privacy",
-          body: "The details you share when ordering — name, address, phone number, email — are only used to process your order and stay in touch about it. We don't sell or share your information with third parties for marketing.",
+          body: "The details you share when ordering — name, address, phone number, email — are only used to process your order and stay in touch about it.",
         },
         {
           title: "10. Limits on our responsibility",
-          body: "We work hard to keep our information accurate and our service reliable, but Lilouette isn't liable for damages resulting from misuse of a product or from circumstances outside our control.",
+          body: "We work hard to keep our information accurate and our service reliable, but Lilouette isn't liable for damages resulting from misuse of a product after it's been received, or from circumstances outside our control.",
         },
         {
           title: "11. Changes to these terms",
-          body: "These terms may be updated from time to time without prior notice. The current version always lives on this page, so it's worth a glance every so often.",
+          body: "These terms may be updated from time to time. The current version always lives on this page, so it's worth a glance every so often.",
         },
         {
           title: "12. Get in touch",
@@ -431,7 +431,7 @@ const translations = {
         },
         {
           title: "6. Dërgesa",
-          body: "Porositë zakonisht përgatiten brenda 1–2 ditëve pune. Brenda Kosovës, dorëzimi zgjat rreth 2–4 ditë pune. Lilouette nuk mban përgjegjësi për vonesa të shkaktuara nga kompania e transportit ose ditë feste.",
+          body: "Dorëzimi zgjat 1 deri në 2 ditë pune.",
         },
         {
           title: "7. Ndërrimi i produktit",
