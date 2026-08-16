@@ -168,7 +168,7 @@ const translations = {
       order: "Order",
     },
     terms: {
-      eyebrow: "Legal",
+      eyebrow: "Information",
       title: "Terms & Conditions",
       stillQuestion: "Have a question about these terms?",
       getInTouch: "Contact us",
@@ -404,7 +404,7 @@ const translations = {
       order: "Porosia",
     },
     terms: {
-      eyebrow: "Informacion ligjor",
+      eyebrow: "Informacione",
       title: "Termet & Kushtet",
       stillQuestion: "Ke ndonjë pyetje rreth këtyre kushteve?",
       getInTouch: "Na kontakto",
