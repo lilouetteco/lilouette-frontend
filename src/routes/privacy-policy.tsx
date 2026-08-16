@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useT } from "@/lib/i18n";
 
-export const Route = createFileRoute("/faqs")({
+export const Route = createFileRoute("/privacy-policy")({
   head: () => ({ meta: [{ title: "Terms & Conditions — Lilouette" }] }),
   component: TermsPage,
 });
