@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, ShoppingBag, User, LogOut, Settings } from "lucide-react";
+import { Instagram, ShoppingCart, User, LogOut, Settings } from "lucide-react";
 import type { ReactNode } from "react";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/lib/auth";
@@ -46,7 +46,7 @@ function Header() {
             aria-label={`${t.cart.title}, ${count} items`}
             className="relative text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ShoppingBag className="h-4 w-4" />
+            <ShoppingCart className="h-4 w-4" />
             {count > 0 && (
               <span className="absolute -top-2 -right-2 min-w-[1.1rem] h-[1.1rem] px-1 inline-flex items-center justify-center rounded-full bg-accent text-[10px] font-medium text-background">
                 {count}

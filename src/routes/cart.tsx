@@ -7,7 +7,7 @@ import { createOrder, type OrderOut, API } from "@/lib/api";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/cart")({
-  head: () => ({ meta: [{ title: "Your bag — Lilouette" }] }),
+  head: () => ({ meta: [{ title: "Your cart — Lilouette" }] }),
   component: CartPage,
 });
 
