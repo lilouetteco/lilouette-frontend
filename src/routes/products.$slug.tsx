@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
@@ -26,6 +26,7 @@ function ProductDetailPage() {
   const { addItem, items } = useCart();
   const { t } = useT();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [mainLoaded, setMainLoaded] = useState(false);
 
   const allImages = product
     ? [product.image_url, ...product.images.map((i) => i.url)]
@@ -33,6 +34,10 @@ function ProductDetailPage() {
 
   const clampedIndex = Math.min(activeIndex, Math.max(0, allImages.length - 1));
   const displayImg = allImages[clampedIndex] ?? "";
+
+  useEffect(() => {
+    setMainLoaded(false);
+  }, [displayImg]);
 
   function prev() { setActiveIndex((i) => (i - 1 + allImages.length) % allImages.length); }
   function next() { setActiveIndex((i) => (i + 1) % allImages.length); }
@@ -91,11 +96,15 @@ function ProductDetailPage() {
           <div className="sticky top-24 flex flex-col gap-4">
             <div className="relative overflow-hidden rounded-3xl bg-secondary aspect-square shadow-[var(--shadow-soft)] group">
               <img
+                key={displayImg}
                 src={displayImg.startsWith("/") ? `${API}${displayImg}` : displayImg}
                 alt={product.name}
                 width={1200}
                 height={1200}
-                className="h-full w-full object-cover transition-opacity duration-200"
+                decoding="async"
+                fetchPriority="high"
+                onLoad={() => setMainLoaded(true)}
+                className={`h-full w-full object-cover transition-opacity duration-300 ${mainLoaded ? "opacity-100" : "opacity-0"}`}
               />
               {allImages.length > 1 && (
                 <>
@@ -141,6 +150,8 @@ function ProductDetailPage() {
                     <img
                       src={url.startsWith("/") ? `${API}${url}` : url}
                       alt=""
+                      loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover"
                     />
                   </button>

@@ -82,11 +82,21 @@ function ProductsPage() {
 function ProductCard({ product }: { product: Product }) {
   const { addItem, items } = useCart();
   const { t } = useT();
+  const [loaded, setLoaded] = useState(false);
   const inBag = items.some((i) => i.slug === product.slug);
   return (
     <article className="group flex flex-col">
       <Link to="/products/$slug" params={{ slug: product.slug }} className="block overflow-hidden rounded-2xl bg-secondary aspect-square mb-5">
-        <img src={`${API}${product.image_url}`} alt={product.name} loading="lazy" width={800} height={800} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <img
+          src={`${API}${product.image_url}`}
+          alt={product.name}
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={800}
+          onLoad={() => setLoaded(true)}
+          className={`h-full w-full object-cover transition-[opacity,transform] duration-700 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
+        />
       </Link>
       <div className="flex items-baseline justify-between mb-2">
         <Link to="/products/$slug" params={{ slug: product.slug }} className="font-display text-2xl hover:text-accent transition-colors">{product.name}</Link>

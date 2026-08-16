@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
 import { useT } from "@/lib/i18n";
@@ -127,6 +128,7 @@ function Index() {
 function FeaturedCard({ product }: { product: Product }) {
   const { addItem, items } = useCart();
   const { t } = useT();
+  const [loaded, setLoaded] = useState(false);
   const inBag = items.some((i) => i.slug === product.slug);
   return (
     <article className="group">
@@ -135,9 +137,11 @@ function FeaturedCard({ product }: { product: Product }) {
           src={`${API}${product.image_url}`}
           alt={product.name}
           loading="lazy"
+          decoding="async"
           width={800}
           height={800}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          onLoad={() => setLoaded(true)}
+          className={`h-full w-full object-cover transition-[opacity,transform] duration-700 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
         />
       </Link>
       <div className="pt-4 flex items-baseline justify-between">
