@@ -198,8 +198,8 @@ const translations = {
           body: "Orders are typically prepared within 1–2 business days. Delivery within Kosovo takes about 2–4 business days. We're not responsible for delays caused by the courier, weather, or public holidays.",
         },
         {
-          title: "7. Returns & exchanges",
-          body: "Not the right fit? You can request a return or exchange within 14 days of receiving your order, as long as the piece is unworn and still in its original packaging. If the issue is a defect or a mistake on our end, we'll cover the return shipping.",
+          title: "7. Exchanges",
+          body: "Not the right fit? You can exchange it for a different piece within 14 days of receiving your order, as long as it's unworn and still in its original packaging. We don't offer refunds — exchanges only. If the issue is a defect or a mistake on our end, we'll cover the shipping cost.",
         },
         {
           title: "8. Ownership of our content",
@@ -434,8 +434,8 @@ const translations = {
           body: "Porositë zakonisht përgatiten brenda 1–2 ditëve pune. Brenda Kosovës, dorëzimi zgjat rreth 2–4 ditë pune. Lilouette nuk mban përgjegjësi për vonesa të shkaktuara nga kompania e transportit, kushtet e motit ose ditë feste.",
         },
         {
-          title: "7. Kthimi ose ndërrimi i një produkti",
-          body: "Nëse produkti nuk të pëlqen ose ka ndonjë problem, mund të kërkosh kthim apo ndërrim brenda 14 ditëve nga marrja e porosisë, me kusht që artikulli të jetë i paveshur dhe në paketimin origjinal. Nëse arsyeja e kthimit është defekt apo gabim nga ana jonë, kostot e dërgesës për kthimin i mbulojmë ne.",
+          title: "7. Ndërrimi i produktit",
+          body: "Nëse produkti nuk të pëlqen ose ka ndonjë problem, mund ta ndërrosh me një produkt tjetër brenda 14 ditëve nga marrja e porosisë, me kusht që artikulli të jetë i paveshur dhe në paketimin origjinal. Nuk ofrojmë kthim të parave, vetëm ndërrim. Nëse arsyeja e ndërrimit është defekt apo gabim nga ana jonë, kostot e dërgesës i mbulojmë ne.",
         },
         {
           title: "8. Të drejtat mbi përmbajtjen",
