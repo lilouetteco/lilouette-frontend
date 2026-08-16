@@ -415,15 +415,15 @@ const translations = {
         },
         {
           title: "2. Duke përdorur faqen, i pranon këto kushte",
-          body: "Thjesht duke shfletuar ose duke blerë nga lilouette.co, konsiderohet se je dakord me kushtet e përshkruara në këtë faqe. Nëse ka ndonjë pikë me të cilën nuk pajtohesh, të lutemi mos vazhdo me përdorimin e faqes ose me kryerjen e një porosie.",
+          body: "Thjesht duke shfletuar ose duke blerë nga lilouette.co, konsiderohet se je dakord me kushtet e përshkruara në këtë faqe.",
         },
         {
           title: "3. Produktet dhe përshkrimet",
-          body: "Përpiqemi që fotot, ngjyrat dhe përshkrimet e çdo produkti të jenë sa më afër realitetit, por variacione të vogla janë të mundshme për shkak të ekranit tënd ose procesit të prodhimit me dorë. Nëse një artikull mbaron nga stoku pas porositjes, do të njoftohesh menjëherë dhe do të ofrohet zëvendësim ose kthim i plotë i shumës.",
+          body: "Përpiqemi që fotot, ngjyrat dhe përshkrimet e çdo produkti të jenë sa më afër realitetit. Nëse një artikull mbaron nga stoku pas porositjes, do të njoftohesh menjëherë dhe do të ofrohet zëvendësim ose kthim i plotë i shumës.",
         },
         {
           title: "4. Si funksionon një porosi",
-          body: "Kur vendos një porosi, kjo konsiderohet si një kërkesë për blerje sipas çmimit të shfaqur në atë moment. Do të marrësh një konfirmim me email ose mesazh pasi porosia të jetë regjistruar. Lilouette ka të drejtë të anulojë një porosi në raste të veçanta, si p.sh. gabim çmimi, mungesë stoku ose dyshim për mashtrim.",
+          body: "Kur vendos një porosi, kjo konsiderohet si një kërkesë për blerje sipas çmimit të shfaqur në atë moment. Pasi të kesh konfirmuar të gjitha të dhënat e tua dhe porosia të jetë vendosur, do të marrësh një konfirmim në email dhe gjithashtu do të kontaktohesh në numrin tënd të telefonit për konfirmim. Lilouette ka të drejtë të anulojë një porosi në raste të veçanta, si p.sh. gabim çmimi, mungesë stoku ose dyshim për mashtrim.",
         },
         {
           title: "5. Pagesa",
@@ -431,11 +431,11 @@ const translations = {
         },
         {
           title: "6. Dërgesa",
-          body: "Porositë zakonisht përgatiten brenda 1–2 ditëve pune. Brenda Kosovës, dorëzimi zgjat rreth 2–4 ditë pune. Lilouette nuk mban përgjegjësi për vonesa të shkaktuara nga kompania e transportit, kushtet e motit ose ditë feste.",
+          body: "Porositë zakonisht përgatiten brenda 1–2 ditëve pune. Brenda Kosovës, dorëzimi zgjat rreth 2–4 ditë pune. Lilouette nuk mban përgjegjësi për vonesa të shkaktuara nga kompania e transportit ose ditë feste.",
         },
         {
           title: "7. Ndërrimi i produktit",
-          body: "Nëse produkti nuk të pëlqen ose ka ndonjë problem, mund ta ndërrosh me një produkt tjetër brenda 14 ditëve nga marrja e porosisë, me kusht që artikulli të jetë i paveshur dhe në paketimin origjinal. Nuk ofrojmë kthim të parave, vetëm ndërrim. Nëse arsyeja e ndërrimit është defekt apo gabim nga ana jonë, kostot e dërgesës i mbulojmë ne.",
+          body: "Nëse produkti nuk të pëlqen ose ka ndonjë problem, mund ta ndërrosh me një produkt tjetër brenda 14 ditëve nga marrja e porosisë, me kusht që artikulli të jetë i paveshur dhe në paketimin origjinal. Nuk ofrojmë kthim të parave, vetëm ndërrim.",
         },
         {
           title: "8. Të drejtat mbi përmbajtjen",
@@ -443,15 +443,15 @@ const translations = {
         },
         {
           title: "9. Privatësia e të dhënave tuaja",
-          body: "Informacionet që na jep gjatë porositjes (emri, adresa, numri i telefonit, email-i) përdoren vetëm për të përpunuar porosinë dhe për t'u lidhur me ty rreth saj. Nuk i shesim apo i ndajmë të dhënat e tua me palë të treta për qëllime marketingu.",
+          body: "Informacionet që na jep gjatë porositjes (emri, adresa, numri i telefonit, email-i) përdoren vetëm për të përpunuar porosinë dhe për t'u lidhur me ty rreth saj.",
         },
         {
           title: "10. Kufizimi i përgjegjësisë",
-          body: "Bëjmë çmos që informacioni në faqe të jetë i saktë dhe shërbimi i cilësisë së lartë, por Lilouette nuk mban përgjegjësi për dëme që mund të vijnë nga përdorimi jo i duhur i produkteve ose nga probleme jashtë kontrollit tonë.",
+          body: "Bëjmë çmos që informacioni në faqe të jetë i saktë dhe shërbimi i cilësisë së lartë, por Lilouette nuk mban përgjegjësi për dëme që mund të vijnë nga përdorimi jo i duhur i produkteve pas marrjes së produktit, ose nga probleme jashtë kontrollit tonë.",
         },
         {
           title: "11. Ndryshime të mundshme",
-          body: "Këto kushte mund të përditësohen herë pas here pa njoftim paraprak. Versioni aktual gjendet gjithmonë në këtë faqe, prandaj të rekomandojmë ta rishikosh kohë pas kohe.",
+          body: "Këto kushte mund të përditësohen herë pas here. Versioni aktual gjendet gjithmonë në këtë faqe, prandaj të rekomandojmë ta rishikosh kohë pas kohe.",
         },
         {
           title: "12. Na kontakto",
