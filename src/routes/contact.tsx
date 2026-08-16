@@ -80,7 +80,7 @@ function ContactPage() {
             <input required name="email" type="email" className="field-input" placeholder="you@example.com" />
           </Field>
           <Field label={t.contact.message}>
-            <textarea required name="message" rows={5} className="field-input resize-none" placeholder={t.contact.messagePlaceholder} />
+            <textarea required name="message" rows={5} className="field-input resize-none" />
           </Field>
           <button
             type="submit"
