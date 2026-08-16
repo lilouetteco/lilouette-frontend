@@ -187,7 +187,7 @@ const translations = {
         },
         {
           title: "4. Placing an order",
-          body: "Placing an order is a request to buy at the price shown at that moment. Once you've confirmed all your order details and the order is placed, you'll get a confirmation by email and we'll also contact you by phone to confirm. We reserve the right to cancel an order in certain cases — a pricing error, an item out of stock, or suspected fraud.",
+          body: "Placing an order is a request to buy at the price shown at that moment. Once you've confirmed all your order details and the order is placed, you'll get a confirmation by email and we'll also contact you by phone to confirm. We reserve the right to cancel an order in certain cases — an item out of stock or suspected fraud.",
         },
         {
           title: "5. Payment",
@@ -423,7 +423,7 @@ const translations = {
         },
         {
           title: "4. Si funksionon një porosi",
-          body: "Kur vendos një porosi, kjo konsiderohet si një kërkesë për blerje sipas çmimit të shfaqur në atë moment. Pasi të kesh konfirmuar të gjitha të dhënat e tua dhe porosia të jetë vendosur, do të marrësh një konfirmim në email dhe gjithashtu do të kontaktohesh në numrin tënd të telefonit për konfirmim. Lilouette ka të drejtë të anulojë një porosi në raste të veçanta, si p.sh. gabim çmimi, mungesë stoku ose dyshim për mashtrim.",
+          body: "Kur vendos një porosi, kjo konsiderohet si një kërkesë për blerje sipas çmimit të shfaqur në atë moment. Pasi të kesh konfirmuar të gjitha të dhënat e tua dhe porosia të jetë vendosur, do të marrësh një konfirmim në email dhe gjithashtu do të kontaktohesh në numrin tënd të telefonit për konfirmim. Lilouette ka të drejtë të anulojë një porosi në raste të veçanta, si p.sh. mungesë stoku ose dyshim për mashtrim.",
         },
         {
           title: "5. Pagesa",
