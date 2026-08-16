@@ -195,7 +195,7 @@ const translations = {
         },
         {
           title: "6. Shipping",
-          body: "Delivery takes 1 to 2 business days.",
+          body: "Your order is prepared within the day, and delivery happens within 1–2 business days.",
         },
         {
           title: "7. Exchanges",
@@ -431,7 +431,7 @@ const translations = {
         },
         {
           title: "6. Dërgesa",
-          body: "Dorëzimi zgjat 1 deri në 2 ditë pune.",
+          body: "Porosia përgatitet brenda ditës, ndërsa dorëzimi ndodh brenda 1–2 ditëve pune.",
         },
         {
           title: "7. Ndërrimi i produktit",
