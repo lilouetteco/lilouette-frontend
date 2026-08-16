@@ -419,7 +419,7 @@ const translations = {
         },
         {
           title: "3. Produktet dhe përshkrimet",
-          body: "Përpiqemi që fotot, ngjyrat dhe përshkrimet e çdo produkti të jenë sa më afër realitetit. Nëse një artikull mbaron nga stoku pas porositjes, do të njoftohesh menjëherë dhe do të ofrohet zëvendësim ose kthim i plotë i shumës.",
+          body: "Përpiqemi që fotot, ngjyrat dhe përshkrimet e çdo produkti të jenë sa më afër realitetit. Nëse një artikull mbaron nga stoku pas porositjes, do të njoftohesh menjëherë.",
         },
         {
           title: "4. Si funksionon një porosi",
@@ -435,7 +435,7 @@ const translations = {
         },
         {
           title: "7. Ndërrimi i produktit",
-          body: "Nëse produkti nuk të pëlqen ose ka ndonjë problem, mund ta ndërrosh me një produkt tjetër brenda 14 ditëve nga marrja e porosisë, me kusht që artikulli të jetë i paveshur dhe në paketimin origjinal. Nuk ofrojmë kthim të parave, vetëm ndërrim.",
+          body: "Nëse produkti nuk të pëlqen ose ka ndonjë problem, ndërrimi pranohet vetëm brenda 24 orëve nga marrja e porosisë, me kusht që artikulli të jetë i paveshur dhe në paketimin origjinal. Nuk ofrojmë kthim të parave, vetëm ndërrim.",
         },
         {
           title: "8. Të drejtat mbi përmbajtjen",
