@@ -93,7 +93,7 @@ function ProductDetailPage() {
 
         <div className="grid md:grid-cols-2 gap-14 lg:gap-20 items-start">
           {/* ── Left: image gallery ── */}
-          <div className="sticky top-24 flex flex-col gap-4">
+          <div className="md:sticky md:top-24 flex flex-col gap-4">
             <div className="relative overflow-hidden rounded-3xl bg-secondary aspect-square shadow-[var(--shadow-soft)] group">
               <img
                 key={displayImg}
