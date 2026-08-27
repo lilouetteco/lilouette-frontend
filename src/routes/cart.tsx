@@ -201,7 +201,7 @@ function CartPage() {
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
-                <Field label={t.cart.name}>
+                <Field label={t.cart.name} required>
                   <input
                     required value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -209,7 +209,7 @@ function CartPage() {
                     className="cart-input"
                   />
                 </Field>
-                <Field label={t.cart.email}>
+                <Field label={t.cart.email} required>
                   <input
                     required type="email" value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -217,7 +217,7 @@ function CartPage() {
                     className="cart-input"
                   />
                 </Field>
-                <Field label={t.cart.phone}>
+                <Field label={t.cart.phone} required>
                   <input
                     required type="tel" value={phone}
                     onChange={(e) => setPhone(e.target.value)}
@@ -233,7 +233,7 @@ function CartPage() {
                     className="cart-input"
                   />
                 </Field>
-                <Field label={t.cart.address}>
+                <Field label={t.cart.address} required>
                   <textarea
                     required value={address}
                     onChange={(e) => setAddress(e.target.value)}
@@ -339,10 +339,13 @@ function CartPage() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="block text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">{label}</span>
+      <span className="block text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
+        {label}
+        {required && <span className="text-destructive ml-1">*</span>}
+      </span>
       {children}
     </label>
   );
