@@ -177,6 +177,13 @@ const translations = {
       noOrders: "You haven't placed any orders yet.",
       order: "Order",
     },
+    orderStatus: {
+      pending: "Pending",
+      confirmed: "Confirmed",
+      shipped: "Shipped",
+      delivered: "Delivered",
+      cancelled: "Cancelled",
+    },
     terms: {
       eyebrow: "Information",
       title: "Terms & Conditions",
@@ -421,6 +428,13 @@ const translations = {
       passwordRule: "Të paktën 8 karaktere dhe një numër",
       noOrders: "Nuk keni bërë asnjë porosi ende.",
       order: "Porosia",
+    },
+    orderStatus: {
+      pending: "Në pritje",
+      confirmed: "Konfirmuar",
+      shipped: "Dërguar",
+      delivered: "Dorëzuar",
+      cancelled: "Anuluar",
     },
     terms: {
       eyebrow: "Informacione",

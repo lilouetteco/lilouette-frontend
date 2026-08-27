@@ -230,19 +230,20 @@ function OrdersSection({ token }: { token: string }) {
         <p className="text-muted-foreground text-sm">{t.account.noOrders}</p>
       ) : (
         <div className="space-y-4">
-          {orders.map((order) => (
+          {orders.map((order) => {
+            const itemsSubtotal = order.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            const shipping = order.total - itemsSubtotal;
+            const statusLabel = (t.orderStatus as Record<string, string>)[order.status] ?? order.status;
+            return (
             <div key={order.id} className="rounded-xl border border-border/50 p-5">
               <div className="flex items-start justify-between gap-4 mb-3">
-                <div>
-                  <p className="text-xs tracking-[0.15em] uppercase text-muted-foreground mb-1">{t.account.order} #{order.reference}</p>
-                  <p className="font-display text-xl">€{order.total.toFixed(2)}</p>
-                </div>
-                <span className={`rounded-full px-3 py-1 text-xs capitalize ${
+                <p className="text-xs tracking-[0.15em] uppercase text-muted-foreground mb-1">{t.account.order} #{order.reference}</p>
+                <span className={`rounded-full px-3 py-1 text-xs ${
                   order.status === "confirmed" ? "bg-green-100 text-green-700" :
                   order.status === "pending" ? "bg-amber-100 text-amber-700" :
                   "bg-secondary text-muted-foreground"
                 }`}>
-                  {order.status}
+                  {statusLabel}
                 </span>
               </div>
               <ul className="space-y-2">
@@ -254,8 +255,23 @@ function OrdersSection({ token }: { token: string }) {
                   </li>
                 ))}
               </ul>
+              <div className="border-t border-border/40 mt-3 pt-3 space-y-1.5">
+                <div className="flex justify-between text-sm text-muted-foreground">
+                  <span>{t.cart.subtotal}</span>
+                  <span>€{itemsSubtotal.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-sm text-muted-foreground">
+                  <span>{t.cart.shipping}</span>
+                  <span>€{shipping.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between pt-1">
+                  <span className="text-sm font-medium">{t.cart.total}</span>
+                  <span className="font-display text-xl">€{order.total.toFixed(2)}</span>
+                </div>
+              </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </section>
