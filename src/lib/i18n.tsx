@@ -42,6 +42,9 @@ const translations = {
       priceHigh: "Price: High to Low",
       soldOut: "Sold out",
       noProducts: "No products found.",
+      filterAll: "All",
+      filterEarrings: "Earrings",
+      filterBracelets: "Bracelets (Cuffs)",
     },
     product: {
       back: "Back to collection",
@@ -277,6 +280,9 @@ const translations = {
       priceHigh: "Çmimi: Lart në ulët",
       soldOut: "I shitur",
       noProducts: "Nuk u gjetën produkte.",
+      filterAll: "Të gjitha",
+      filterEarrings: "Vathë",
+      filterBracelets: "Byzylykë (Cuffs)",
     },
     product: {
       back: "Kthehu te koleksioni",

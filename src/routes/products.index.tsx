@@ -5,7 +5,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
 import { useT } from "@/lib/i18n";
 import { toast } from "sonner";
-import { fetchProducts, type Product, type ProductSort, API } from "@/lib/api";
+import { fetchProducts, type Product, type ProductCategory, type ProductSort, API } from "@/lib/api";
 
 export const Route = createFileRoute("/products/")({
   head: () => ({ meta: [{ title: "Collection — Lilouette" }] }),
@@ -15,6 +15,7 @@ export const Route = createFileRoute("/products/")({
 function ProductsPage() {
   const { t } = useT();
   const [sort, setSort] = useState<ProductSort>("default");
+  const [category, setCategory] = useState<ProductCategory | "all">("all");
 
   const SORT_OPTIONS: { value: ProductSort; label: string }[] = [
     { value: "default",    label: t.products.byRelevance },
@@ -22,9 +23,15 @@ function ProductsPage() {
     { value: "price_desc", label: t.products.priceHigh },
   ];
 
+  const CATEGORY_OPTIONS: { value: ProductCategory | "all"; label: string }[] = [
+    { value: "all",      label: t.products.filterAll },
+    { value: "earrings", label: t.products.filterEarrings },
+    { value: "bracelet", label: t.products.filterBracelets },
+  ];
+
   const { data: products = [], isLoading } = useQuery<Product[]>({
-    queryKey: ["products", sort],
-    queryFn: () => fetchProducts({ sort }),
+    queryKey: ["products", sort, category],
+    queryFn: () => fetchProducts({ sort, category: category === "all" ? undefined : category }),
     staleTime: 1000 * 60 * 2,
   });
 
@@ -36,7 +43,22 @@ function ProductsPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="flex items-center justify-end mb-10">
+        <div className="flex items-center justify-between mb-10 gap-4 flex-wrap">
+          <div className="flex items-center gap-2">
+            {CATEGORY_OPTIONS.map((o) => (
+              <button
+                key={o.value}
+                onClick={() => setCategory(o.value)}
+                className={`rounded-full border px-5 py-2.5 text-sm tracking-wide transition-colors ${
+                  category === o.value
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border text-foreground hover:border-foreground"
+                }`}
+              >
+                {o.label}
+              </button>
+            ))}
+          </div>
           <div className="relative">
             <select
               value={sort}

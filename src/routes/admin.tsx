@@ -9,7 +9,7 @@ import {
   adminAddProductImage, adminDeleteProductImage,
   adminFetchUsers, adminCreateUser, adminUpdateUser, adminDeleteUser,
   adminFetchOrders, adminUpdateOrderStatus,
-  type Product, type ProductImage, type AdminUser, type Order, API,
+  type Product, type ProductCategory, type ProductImage, type AdminUser, type Order, API,
 } from "@/lib/api";
 
 export const Route = createFileRoute("/admin")({
@@ -69,9 +69,11 @@ function AdminPage() {
 type ProductForm = {
   name: string; slug: string; description: string;
   price: string; stock: string; is_active: boolean; is_sold_out: boolean; image_url: string;
+  category: ProductCategory;
 };
 const EMPTY_PRODUCT: ProductForm = {
   name: "", slug: "", description: "", price: "", stock: "", is_active: true, is_sold_out: false, image_url: "",
+  category: "earrings",
 };
 function toSlug(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -101,7 +103,7 @@ function ProductsTab({ token }: { token: string }) {
 
   function openCreate() { setForm(EMPTY_PRODUCT); setEditSlug(null); setError(null); setShowForm(true); }
   function openEdit(p: Product) {
-    setForm({ name: p.name, slug: p.slug, description: p.description, price: String(p.price), stock: String(p.stock), is_active: p.is_active, is_sold_out: p.is_sold_out, image_url: p.image_url });
+    setForm({ name: p.name, slug: p.slug, description: p.description, price: String(p.price), stock: String(p.stock), is_active: p.is_active, is_sold_out: p.is_sold_out, image_url: p.image_url, category: p.category });
     setEditSlug(p.slug); setError(null); setShowForm(true);
   }
   function closeForm() { setShowForm(false); setEditSlug(null); setForm(EMPTY_PRODUCT); setError(null); }
@@ -118,7 +120,7 @@ function ProductsTab({ token }: { token: string }) {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault(); setError(null); setSaving(true);
     try {
-      const payload = { name: form.name, slug: form.slug, description: form.description, price: parseFloat(form.price), stock: parseInt(form.stock, 10), is_active: form.is_active, is_sold_out: form.is_sold_out, image_url: form.image_url };
+      const payload = { name: form.name, slug: form.slug, description: form.description, price: parseFloat(form.price), stock: parseInt(form.stock, 10), is_active: form.is_active, is_sold_out: form.is_sold_out, image_url: form.image_url, category: form.category };
       if (editSlug) {
         const { slug: _s, ...update } = payload;
         const updated = await adminUpdateProduct(token, editSlug, update);
@@ -183,6 +185,12 @@ function ProductsTab({ token }: { token: string }) {
             </Field>
             <Field label="Stock quantity">
               <input required type="number" min="0" className="admin-input" value={form.stock} onChange={(e) => setForm((f) => ({ ...f, stock: e.target.value }))} placeholder="10" />
+            </Field>
+            <Field label="Category">
+              <select className="admin-input" value={form.category} onChange={(e) => setForm((f) => ({ ...f, category: e.target.value as ProductCategory }))}>
+                <option value="earrings">Earrings</option>
+                <option value="bracelet">Bracelet (Cuff)</option>
+              </select>
             </Field>
             <div className="md:col-span-2">
               <Field label="Description">
@@ -257,6 +265,7 @@ function ProductsTab({ token }: { token: string }) {
             <thead>
               <tr className="border-b border-border/40 bg-secondary/40">
                 <th className="text-left px-5 py-3.5 text-xs tracking-[0.15em] uppercase text-muted-foreground font-normal">Product</th>
+                <th className="text-left px-5 py-3.5 text-xs tracking-[0.15em] uppercase text-muted-foreground font-normal">Category</th>
                 <th className="text-right px-5 py-3.5 text-xs tracking-[0.15em] uppercase text-muted-foreground font-normal">Price</th>
                 <th className="text-right px-5 py-3.5 text-xs tracking-[0.15em] uppercase text-muted-foreground font-normal">Stock</th>
                 <th className="text-center px-5 py-3.5 text-xs tracking-[0.15em] uppercase text-muted-foreground font-normal">Status</th>
@@ -276,6 +285,7 @@ function ProductsTab({ token }: { token: string }) {
                       </div>
                     </div>
                   </td>
+                  <td className="px-5 py-4 text-muted-foreground capitalize">{p.category}</td>
                   <td className="px-5 py-4 text-right tabular-nums">€{p.price}</td>
                   <td className="px-5 py-4 text-right tabular-nums">
                     <span className={p.stock === 0 ? "text-destructive font-medium" : ""}>{p.stock === 0 ? "0" : p.stock}</span>
@@ -307,7 +317,7 @@ function ProductsTab({ token }: { token: string }) {
                 </tr>
                 {gallerySlug === p.slug && (
                   <tr key={`${p.slug}-gallery`}>
-                    <td colSpan={5} className="px-5 pb-5 bg-secondary/10">
+                    <td colSpan={6} className="px-5 pb-5 bg-secondary/10">
                       <div className="pt-3">
                         <p className="text-xs tracking-[0.12em] uppercase text-muted-foreground mb-3">Gallery images</p>
                         <div className="flex flex-wrap gap-3 items-end">

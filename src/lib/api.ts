@@ -52,6 +52,8 @@ export async function apiResetPassword(token: string, password: string): Promise
 
 export type ProductImage = { id: number; url: string; position: number };
 
+export type ProductCategory = "earrings" | "bracelet";
+
 export type Product = {
   id: number;
   slug: string;
@@ -62,6 +64,7 @@ export type Product = {
   stock: number;
   is_sold_out: boolean;
   is_active: boolean;
+  category: ProductCategory;
   images: ProductImage[];
 };
 
@@ -77,11 +80,12 @@ export type Cart = {
 
 export type ProductSort = "default" | "price_asc" | "price_desc" | "most_loved";
 
-export async function fetchProducts(opts?: { sort?: ProductSort; min?: number; max?: number }): Promise<Product[]> {
+export async function fetchProducts(opts?: { sort?: ProductSort; min?: number; max?: number; category?: ProductCategory }): Promise<Product[]> {
   const params = new URLSearchParams();
   if (opts?.sort && opts.sort !== "default") params.set("sort", opts.sort);
   if (opts?.min != null) params.set("min", String(opts.min));
   if (opts?.max != null) params.set("max", String(opts.max));
+  if (opts?.category) params.set("category", opts.category);
   const qs = params.toString();
   const res = await fetch(`${API}/api/products/${qs ? `?${qs}` : ""}`);
   if (!res.ok) throw new Error("Failed to fetch products");
