@@ -13,9 +13,12 @@ export const Route = createFileRoute("/cart")({
 
 type Step = "cart" | "checkout" | "confirmed";
 
+const SHIPPING_FEE = 2.5;
+
 function CartPage() {
   const { items, subtotal, removeItem, clear } = useCart();
   const { t } = useT();
+  const total = subtotal + SHIPPING_FEE;
   const [step, setStep] = useState<Step>("cart");
   const [order, setOrder] = useState<OrderOut | null>(null);
   const [name, setName] = useState("");
@@ -169,9 +172,19 @@ function CartPage() {
                       </span>
                     </div>
                   ))}
-                  <div className="border-t border-border/60 pt-3 flex justify-between">
-                    <span className="text-sm font-medium">{t.cart.total}</span>
-                    <span className="font-display text-xl">€{subtotal.toFixed(2)}</span>
+                  <div className="border-t border-border/60 pt-3 space-y-1.5">
+                    <div className="flex justify-between text-sm text-muted-foreground">
+                      <span>{t.cart.subtotal}</span>
+                      <span>€{subtotal.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between text-sm text-muted-foreground">
+                      <span>{t.cart.shipping}</span>
+                      <span>€{SHIPPING_FEE.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between pt-1.5">
+                      <span className="text-sm font-medium">{t.cart.total}</span>
+                      <span className="font-display text-xl">€{total.toFixed(2)}</span>
+                    </div>
                   </div>
                 </div>
 
