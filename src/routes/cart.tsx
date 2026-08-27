@@ -26,9 +26,14 @@ function CartPage() {
   const [note, setNote] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showConfirm, setShowConfirm] = useState(false);
 
-  async function handlePlaceOrder(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    setShowConfirm(true);
+  }
+
+  async function handlePlaceOrder() {
     setError(null);
     setLoading(true);
     try {
@@ -49,9 +54,11 @@ function CartPage() {
       });
       setOrder(placed);
       await clear();
+      setShowConfirm(false);
       setStep("confirmed");
     } catch (err) {
       setError(err instanceof Error ? err.message : t.cart.error);
+      setShowConfirm(false);
     } finally {
       setLoading(false);
     }
@@ -180,7 +187,7 @@ function CartPage() {
               </div>
 
               {/* Form */}
-              <form onSubmit={handlePlaceOrder} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <Field label={t.cart.name}>
                   <input
                     required value={name}
@@ -243,6 +250,42 @@ function CartPage() {
               </form>
             </div>
           </>
+        )}
+
+        {/* ── Confirm order modal ── */}
+        {showConfirm && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-6"
+            onClick={() => !loading && setShowConfirm(false)}
+          >
+            <div
+              className="w-full max-w-sm rounded-2xl bg-background border border-border/60 shadow-[var(--shadow-soft)] p-7 text-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h2 className="font-display text-2xl mb-3">{t.cart.confirmOrderTitle}</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                {t.cart.confirmOrderBody}
+              </p>
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowConfirm(false)}
+                  disabled={loading}
+                  className="flex-1 rounded-full border border-border py-2.5 text-sm tracking-wide hover:border-foreground transition-colors disabled:opacity-60"
+                >
+                  {t.cart.cancel}
+                </button>
+                <button
+                  type="button"
+                  onClick={handlePlaceOrder}
+                  disabled={loading}
+                  className="flex-1 rounded-full bg-foreground text-background py-2.5 text-sm tracking-wide transition-all hover:bg-accent disabled:opacity-60"
+                >
+                  {loading ? t.cart.placing : t.cart.confirmYes}
+                </button>
+              </div>
+            </div>
+          </div>
         )}
 
         {/* ── Confirmed ── */}
