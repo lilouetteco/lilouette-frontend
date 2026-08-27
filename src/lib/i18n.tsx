@@ -9,9 +9,11 @@ const translations = {
       terms: "Terms & Conditions",
       contact: "Contact",
       signIn: "Sign in",
+      signUp: "Create account",
       signOut: "Sign out",
       myAccount: "My account",
       admin: "Admin",
+      language: "Language",
     },
     footer: {
       madeWith: "Made with love",
@@ -261,9 +263,11 @@ const translations = {
       terms: "Termet & Kushtet",
       contact: "Kontakt",
       signIn: "Hyr",
+      signUp: "Krijo llogari",
       signOut: "Dil",
       myAccount: "Llogaria ime",
       admin: "Admin",
+      language: "Gjuha",
     },
     footer: {
       madeWith: "Bërë me dashuri",

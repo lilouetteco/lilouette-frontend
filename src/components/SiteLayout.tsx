@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, ShoppingCart, User, LogOut, Settings, Menu } from "lucide-react";
+import { Instagram, ShoppingCart, User, UserPlus, LogOut, Settings, Menu } from "lucide-react";
 import type { ReactNode } from "react";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/lib/auth";
@@ -25,7 +25,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-30 backdrop-blur-md bg-background/70 border-b border-border/50">
       <div className="mx-auto max-w-6xl px-6 py-5">
-        {/* Mobile: hamburger left, logo centered, icons right */}
+        {/* Mobile: hamburger left, logo centered, Instagram right */}
         <div className="grid grid-cols-3 items-center md:hidden">
           <div className="justify-self-start">
             <Sheet>
@@ -51,6 +51,73 @@ function Header() {
                     {t.nav.contact}
                   </Link>
                 </SheetClose>
+
+                <div className="border-t border-border/50 pt-6 flex flex-col gap-5">
+                  <SheetClose asChild>
+                    <Link to="/cart" className="flex items-center gap-3 text-sm uppercase tracking-wide text-foreground">
+                      <ShoppingCart className="h-4 w-4" />
+                      {t.cart.title}
+                      {count > 0 && (
+                        <span className="ml-auto min-w-[1.1rem] h-[1.1rem] px-1 inline-flex items-center justify-center rounded-full bg-accent text-[10px] font-medium text-background normal-case tracking-normal">
+                          {count}
+                        </span>
+                      )}
+                    </Link>
+                  </SheetClose>
+
+                  {user ? (
+                    <>
+                      <SheetClose asChild>
+                        <Link to="/account" className="flex items-center gap-3 text-sm uppercase tracking-wide text-foreground">
+                          <User className="h-4 w-4" /> {t.nav.myAccount}
+                        </Link>
+                      </SheetClose>
+                      {isAdmin && (
+                        <SheetClose asChild>
+                          <Link to="/admin" className="flex items-center gap-3 text-sm uppercase tracking-wide text-foreground">
+                            <Settings className="h-4 w-4" /> {t.nav.admin}
+                          </Link>
+                        </SheetClose>
+                      )}
+                      <SheetClose asChild>
+                        <button onClick={logout} className="flex items-center gap-3 text-sm uppercase tracking-wide text-foreground text-left">
+                          <LogOut className="h-4 w-4" /> {t.nav.signOut}
+                        </button>
+                      </SheetClose>
+                    </>
+                  ) : (
+                    <>
+                      <SheetClose asChild>
+                        <Link to="/login" className="flex items-center gap-3 text-sm uppercase tracking-wide text-foreground">
+                          <User className="h-4 w-4" /> {t.nav.signIn}
+                        </Link>
+                      </SheetClose>
+                      <SheetClose asChild>
+                        <Link to="/register" className="flex items-center gap-3 text-sm uppercase tracking-wide text-foreground">
+                          <UserPlus className="h-4 w-4" /> {t.nav.signUp}
+                        </Link>
+                      </SheetClose>
+                    </>
+                  )}
+                </div>
+
+                <div className="border-t border-border/50 pt-6">
+                  <p className="text-xs uppercase tracking-wide text-muted-foreground mb-3">{t.nav.language}</p>
+                  <div className="flex items-center gap-4">
+                    <button
+                      onClick={() => setLang("en")}
+                      className={`text-sm uppercase tracking-wide ${lang === "en" ? "text-foreground" : "text-muted-foreground"}`}
+                    >
+                      English
+                    </button>
+                    <button
+                      onClick={() => setLang("sq")}
+                      className={`text-sm uppercase tracking-wide ${lang === "sq" ? "text-foreground" : "text-muted-foreground"}`}
+                    >
+                      Shqip
+                    </button>
+                  </div>
+                </div>
               </SheetContent>
             </Sheet>
           </div>
@@ -59,9 +126,6 @@ function Header() {
           </Link>
           <div className="justify-self-end flex items-center gap-4">
             <InstagramLink />
-            <CartLink count={count} title={t.cart.title} />
-            <AccountCluster user={user} logout={logout} isAdmin={isAdmin} t={t} />
-            <LangSwitch lang={lang} setLang={setLang} />
           </div>
         </div>
 
