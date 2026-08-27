@@ -261,11 +261,10 @@ function CartPage() {
 
             <div className="rounded-2xl border border-accent/30 bg-[var(--blush)]/20 px-5 py-4 max-w-md text-left space-y-3">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                This order has a pending payment. The balance will be updated when payment is received.
+                {t.cart.pendingPayment}
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Ju falenderojmë për blerjen tuaj! Porosia juaj po përgatitet dhe do të mbërrijë te ju brenda 24h-72h për për Kosovën.<br />
-                Për çdo informacion mbi dërgesën, ju lutemi të kontaktoni në numrin +38345828082.
+                {t.cart.deliveryInfo}
               </p>
             </div>
 

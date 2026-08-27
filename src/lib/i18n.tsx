@@ -87,6 +87,8 @@ const translations = {
       confirmedA: "Your order",
       confirmedB: "is confirmed. We'll reach out to",
       confirmedC: "to arrange delivery and cash payment.",
+      pendingPayment: "This order has a pending payment. The balance will be updated when payment is received.",
+      deliveryInfo: "Thank you for your purchase! Your order is being prepared and will arrive within 24-72h within Kosovo. For any questions about delivery, please contact us at +38345828082.",
     },
     login: {
       eyebrow: "Welcome back",
@@ -325,6 +327,8 @@ const translations = {
       confirmedA: "Porosia juaj",
       confirmedB: "është konfirmuar. Do t'ju kontaktojmë në",
       confirmedC: "për të organizuar dërgimin dhe pagesën.",
+      pendingPayment: "Kjo porosi ka një pagesë në pritje. Bilanci do të përditësohet kur të merret pagesa.",
+      deliveryInfo: "Ju falenderojmë për blerjen tuaj! Porosia juaj po përgatitet dhe do të mbërrijë te ju brenda 24-72h për Kosovën. Për çdo informacion mbi dërgesën, ju lutemi të kontaktoni në numrin +38345828082.",
     },
     login: {
       eyebrow: "Mirë se keni ardhur",
