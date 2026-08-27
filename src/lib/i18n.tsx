@@ -38,6 +38,7 @@ const translations = {
     products: {
       eyebrow: "Jewelry",
       title: "The collection",
+      subtitle: "Made to be loved!",
       sortBy: "Sort by",
       byRelevance: "By Relevance",
       priceLow: "Price: Low to High",
@@ -292,6 +293,7 @@ const translations = {
     products: {
       eyebrow: "Bizhuteri",
       title: "Koleksioni",
+      subtitle: "Bërë për t'u dashur!",
       sortBy: "Rendit sipas",
       byRelevance: "Sipas rëndësisë",
       priceLow: "Çmimi: Ulët në lart",

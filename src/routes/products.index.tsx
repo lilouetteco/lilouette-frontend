@@ -40,6 +40,7 @@ function ProductsPage() {
       <section className="mx-auto max-w-6xl px-6 pt-16 pb-12 text-center">
         <p className="text-xs tracking-[0.3em] uppercase text-accent mb-4">{t.products.eyebrow}</p>
         <h1 className="font-display text-5xl md:text-6xl">{t.products.title}</h1>
+        <p className="mt-4 text-base md:text-lg text-muted-foreground">{t.products.subtitle}</p>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-24">
