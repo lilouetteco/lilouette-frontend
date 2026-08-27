@@ -5,7 +5,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
 import { useT } from "@/lib/i18n";
 import { toast } from "sonner";
-import heroImage from "@/images/hero.png";
+import heroImage from "@/images/hero-collage.png";
 import { fetchProducts, type Product, API } from "@/lib/api";
 
 export const Route = createFileRoute("/")({
@@ -58,10 +58,10 @@ function Index() {
             <div className="absolute -inset-4 rounded-[2rem] bg-[var(--blush)]/40 blur-2xl" aria-hidden />
             <img
               src={heroImage}
-              alt="Lilouette gold square earring worn in a black and white portrait"
-              width={1200}
-              height={1500}
-              className="relative rounded-[1.5rem] shadow-[var(--shadow-soft)] object-cover aspect-[4/5] w-full"
+              alt="Grid of Lilouette gold jewelry pieces including earrings, a cuff, and a ring styled on natural textures"
+              width={954}
+              height={1648}
+              className="relative rounded-[1.5rem] shadow-[var(--shadow-soft)] object-cover aspect-[954/1648] w-full"
             />
           </div>
         </div>
