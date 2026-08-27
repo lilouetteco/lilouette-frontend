@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
 import { useT } from "@/lib/i18n";
@@ -33,7 +34,7 @@ function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-32 grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-7">
+          <div className="space-y-7 min-w-0">
             <p className="text-xs tracking-[0.3em] uppercase text-accent">{t.home.eyebrow}</p>
             <h1 className="font-display text-5xl md:text-7xl leading-[1.05] text-foreground">
               {t.home.heroLine1}<br/>
@@ -54,7 +55,7 @@ function Index() {
               </Link>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative min-w-0">
             <div className="absolute -inset-4 rounded-[2rem] bg-[var(--blush)]/40 blur-2xl" aria-hidden />
             <img
               src={heroImage}
@@ -81,21 +82,7 @@ function Index() {
           </div>
         </div>
 
-        {products.length > 0 && (
-          <div className="relative">
-            {/* fade edges */}
-            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-background to-transparent" />
-            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-background to-transparent" />
-
-            <div className="flex carousel-track" style={{ width: "max-content" }}>
-              {[...products.slice(0, 6), ...products.slice(0, 6)].map((p, i) => (
-                <div key={`${p.id}-${i}`} className="w-56 flex-shrink-0 px-4">
-                  <FeaturedCard product={p} />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        {products.length > 0 && <FeaturedCarousel products={products.slice(0, 6)} />}
       </section>
 
       {/* About strip */}
@@ -108,20 +95,79 @@ function Index() {
 
         </div>
       </section>
+    </SiteLayout>
+  );
+}
+
+function FeaturedCarousel({ products }: { products: Product[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateScrollState = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 8);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 8);
+  };
+
+  useEffect(() => {
+    updateScrollState();
+  }, [products]);
+
+  const scrollByAmount = (direction: 1 | -1) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative">
+      {/* fade edges */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-background to-transparent" />
+
+      <button
+        type="button"
+        aria-label="Scroll left"
+        onClick={() => scrollByAmount(-1)}
+        disabled={!canScrollLeft}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-background/90 shadow-[var(--shadow-soft)] text-foreground transition-opacity hover:bg-background disabled:opacity-0 disabled:pointer-events-none"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button
+        type="button"
+        aria-label="Scroll right"
+        onClick={() => scrollByAmount(1)}
+        disabled={!canScrollRight}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-background/90 shadow-[var(--shadow-soft)] text-foreground transition-opacity hover:bg-background disabled:opacity-0 disabled:pointer-events-none"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+
+      <div
+        ref={scrollRef}
+        onScroll={updateScrollState}
+        className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth px-6"
+      >
+        {products.map((p) => (
+          <div key={p.id} className="w-56 flex-shrink-0 snap-start px-4">
+            <FeaturedCard product={p} />
+          </div>
+        ))}
+      </div>
 
       <style>{`
-        .carousel-track {
-          animation: carousel-scroll 28s linear infinite;
+        .no-scrollbar {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
-        .carousel-track:hover {
-          animation-play-state: paused;
-        }
-        @keyframes carousel-scroll {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
-    </SiteLayout>
+    </div>
   );
 }
 
