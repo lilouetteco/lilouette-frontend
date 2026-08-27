@@ -82,7 +82,7 @@ function Index() {
           </div>
         </div>
 
-        {products.length > 0 && <FeaturedCarousel products={products.slice(0, 6)} />}
+        {products.length > 0 && <FeaturedCarousel products={products.slice(0, 10)} />}
       </section>
 
       {/* About strip */}
