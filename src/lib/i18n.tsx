@@ -293,7 +293,7 @@ const translations = {
     products: {
       eyebrow: "Bizhuteri",
       title: "Koleksioni",
-      subtitle: "Bërë për t'u dashur!",
+      subtitle: "Krijuar që ta duash çdo ditë.",
       sortBy: "Rendit sipas",
       byRelevance: "Sipas rëndësisë",
       priceLow: "Çmimi: Ulët në lart",
