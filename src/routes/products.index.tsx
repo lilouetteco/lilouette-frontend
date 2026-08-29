@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
 import { useT } from "@/lib/i18n";
@@ -19,6 +19,8 @@ function ProductsPage() {
   const [sort, setSort] = useState<ProductSort>("default");
   const [category, setCategory] = useState<ProductCategory | "all">("all");
   const [page, setPage] = useState(1);
+  const resultsTopRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   const SORT_OPTIONS: { value: ProductSort; label: string }[] = [
     { value: "default",    label: t.products.byRelevance },
@@ -43,6 +45,14 @@ function ProductsPage() {
     setPage(1);
   }, [sort, category]);
 
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    resultsTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [page]);
+
   const totalPages = Math.max(1, Math.ceil(products.length / PAGE_SIZE));
   const pageProducts = products.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
@@ -55,6 +65,7 @@ function ProductsPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-24">
+        <div ref={resultsTopRef} className="scroll-mt-24" />
         <div className="flex items-center justify-between mb-10 gap-4 flex-wrap">
           <div className="flex items-center gap-2">
             {CATEGORY_OPTIONS.map((o) => (
