@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useCart } from "@/lib/cart";
 import { useT } from "@/lib/i18n";
@@ -12,10 +12,13 @@ export const Route = createFileRoute("/products/")({
   component: ProductsPage,
 });
 
+const PAGE_SIZE = 9;
+
 function ProductsPage() {
   const { t } = useT();
   const [sort, setSort] = useState<ProductSort>("default");
   const [category, setCategory] = useState<ProductCategory | "all">("all");
+  const [page, setPage] = useState(1);
 
   const SORT_OPTIONS: { value: ProductSort; label: string }[] = [
     { value: "default",    label: t.products.byRelevance },
@@ -35,6 +38,13 @@ function ProductsPage() {
     queryFn: () => fetchProducts({ sort, category: category === "all" ? undefined : category }),
     staleTime: 1000 * 60 * 2,
   });
+
+  useEffect(() => {
+    setPage(1);
+  }, [sort, category]);
+
+  const totalPages = Math.max(1, Math.ceil(products.length / PAGE_SIZE));
+  const pageProducts = products.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <SiteLayout>
@@ -92,11 +102,45 @@ function ProductsPage() {
             <p className="text-muted-foreground">{t.products.noProducts}</p>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-            {products.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
+          <>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+              {pageProducts.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-16">
+                <button
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                  className="rounded-full border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-foreground disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-border"
+                >
+                  {t.products.previous}
+                </button>
+                {[...Array(totalPages)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setPage(i + 1)}
+                    className={`h-9 w-9 rounded-full border text-sm transition-colors ${
+                      page === i + 1
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-border text-foreground hover:border-foreground"
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                  className="rounded-full border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-foreground disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-border"
+                >
+                  {t.products.next}
+                </button>
+              </div>
+            )}
+          </>
         )}
       </section>
     </SiteLayout>
