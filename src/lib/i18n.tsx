@@ -248,7 +248,7 @@ const translations = {
     },
     contact: {
       eyebrow: "Say hello",
-      title: "Let's talk soon.",
+      title: "Let's talk.",
       subtitle: "Questions about a piece, a custom order, or just want to say hi? Send us a note. We read every one.",
       name: "Your name",
       email: "Email",
@@ -506,7 +506,7 @@ const translations = {
     },
     contact: {
       eyebrow: "Thuani përshëndetje",
-      title: "Le të flasim së shpejti.",
+      title: "Le të flasim.",
       subtitle: "Pyetje rreth një cope, një porosi të personalizuar, ose thjesht doni të thoni përshëndetje? Dërgoni një shënim. I lexojmë të gjitha.",
       name: "Emri juaj",
       email: "Email",
