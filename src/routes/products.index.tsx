@@ -27,6 +27,7 @@ function ProductsPage() {
     { value: "all",      label: t.products.filterAll },
     { value: "earrings", label: t.products.filterEarrings },
     { value: "bracelet", label: t.products.filterBracelets },
+    { value: "necklace", label: t.products.filterNecklaces },
   ];
 
   const { data: products = [], isLoading } = useQuery<Product[]>({

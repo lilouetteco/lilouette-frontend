@@ -52,7 +52,7 @@ export async function apiResetPassword(token: string, password: string): Promise
 
 export type ProductImage = { id: number; url: string; position: number };
 
-export type ProductCategory = "earrings" | "bracelet";
+export type ProductCategory = "earrings" | "bracelet" | "necklace";
 
 export type Product = {
   id: number;

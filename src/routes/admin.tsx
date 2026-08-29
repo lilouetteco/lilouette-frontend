@@ -190,6 +190,7 @@ function ProductsTab({ token }: { token: string }) {
               <select className="admin-input" value={form.category} onChange={(e) => setForm((f) => ({ ...f, category: e.target.value as ProductCategory }))}>
                 <option value="earrings">Earrings</option>
                 <option value="bracelet">Bracelet (Cuff)</option>
+                <option value="necklace">Necklace</option>
               </select>
             </Field>
             <div className="md:col-span-2">

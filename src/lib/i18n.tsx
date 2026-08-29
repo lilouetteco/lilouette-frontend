@@ -48,6 +48,7 @@ const translations = {
       filterAll: "All",
       filterEarrings: "Earrings",
       filterBracelets: "Bracelets (Cuffs)",
+      filterNecklaces: "Necklaces",
     },
     product: {
       back: "Back to collection",
@@ -303,6 +304,7 @@ const translations = {
       filterAll: "Të gjitha",
       filterEarrings: "Vathë",
       filterBracelets: "Byzylykë (Cuffs)",
+      filterNecklaces: "Gjerdanë",
     },
     product: {
       back: "Kthehu te koleksioni",
